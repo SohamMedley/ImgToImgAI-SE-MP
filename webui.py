@@ -226,7 +226,7 @@ with shared.gradio_root:
                                 gr.HTML('* Powered by Fooocus Inpaint Engine <a href="https://github.com/lllyasviel/Fooocus/discussions/414" target="_blank">\U0001F4D4 Documentation</a>')
                                 example_inpaint_prompts.click(lambda x: x[0], inputs=example_inpaint_prompts, outputs=inpaint_additional_prompt, show_progress=False, queue=False)
 
-                            with gr.Column(visible=modules.config.default_inpaint_advanced_masking_checkbox) as inpaint_mask_generation_col:
+            with gr.Column(visible=modules.config.default_inpaint_advanced_masking_checkbox) as inpaint_mask_generation_col:
                                 inpaint_mask_image = grh.Image(label='Mask Upload', source='upload', type='numpy', tool='sketch', height=500, brush_color="#FFFFFF", mask_opacity=1, elem_id='inpaint_mask_canvas')
                                 invert_mask_checkbox = gr.Checkbox(label='Invert Mask When Generating', value=modules.config.default_invert_mask_checkbox)
                                 inpaint_mask_model = gr.Dropdown(label='Mask generation model',
@@ -299,18 +299,18 @@ with shared.gradio_root:
             enhance_input_image = grh.Image(label='Enhance', source='upload', type='numpy', show_label=False, visible=False)
             enhance_uov_method = gr.Radio(label='Enhance Upscale or Variation:', choices=flags.uov_list, 
                                           value=modules.config.default_enhance_uov_method, visible=False)
-                                enhance_uov_processing_order = gr.Radio(label='Order of Processing',
-                                                                        choices=flags.enhancement_uov_processing_order,
-                                                   value=modules.config.default_enhance_uov_processing_order, visible=False)
-                                enhance_uov_prompt_type = gr.Radio(label='Prompt',
-                                                                   choices=flags.enhancement_uov_prompt_types,
-                                              value=modules.config.default_enhance_uov_prompt_type, visible=False)
+            enhance_uov_processing_order = gr.Radio(label='Order of Processing',
+                                                    choices=flags.enhancement_uov_processing_order,
+                                value=modules.config.default_enhance_uov_processing_order, visible=False)
+            enhance_uov_prompt_type = gr.Radio(label='Prompt',
+                                                choices=flags.enhancement_uov_prompt_types,
+                          value=modules.config.default_enhance_uov_prompt_type, visible=False)
             
             # Create placeholders for all enhance tabs
-                    enhance_ctrls = []
-                    enhance_inpaint_mode_ctrls = []
-                    enhance_inpaint_engine_ctrls = []
-                    enhance_inpaint_update_ctrls = []
+            enhance_ctrls = []
+            enhance_inpaint_mode_ctrls = []
+            enhance_inpaint_engine_ctrls = []
+            enhance_inpaint_update_ctrls = []
             
             for index in range(modules.config.default_enhance_tabs):
                 enhance_enabled = gr.Checkbox(label=f'Enable #{index+1}', value=False, visible=False)
@@ -344,24 +344,24 @@ with shared.gradio_root:
                                                          minimum=-64, maximum=64, value=0, visible=False)
                 enhance_mask_invert = gr.Checkbox(label=f'Invert Mask #{index+1}', value=False, visible=False)
 
-                        enhance_ctrls += [
-                            enhance_enabled,
-                            enhance_mask_dino_prompt_text,
-                            enhance_prompt,
-                            enhance_negative_prompt,
-                            enhance_mask_model,
-                            enhance_mask_cloth_category,
-                            enhance_mask_sam_model,
-                            enhance_mask_text_threshold,
-                            enhance_mask_box_threshold,
-                            enhance_mask_sam_max_detections,
-                            enhance_inpaint_disable_initial_latent,
-                            enhance_inpaint_engine,
-                            enhance_inpaint_strength,
-                            enhance_inpaint_respective_field,
-                            enhance_inpaint_erode_or_dilate,
-                            enhance_mask_invert
-                        ]
+                enhance_ctrls += [
+                    enhance_enabled,
+                    enhance_mask_dino_prompt_text,
+                    enhance_prompt,
+                    enhance_negative_prompt,
+                    enhance_mask_model,
+                    enhance_mask_cloth_category,
+                    enhance_mask_sam_model,
+                    enhance_mask_text_threshold,
+                    enhance_mask_box_threshold,
+                    enhance_mask_sam_max_detections,
+                    enhance_inpaint_disable_initial_latent,
+                    enhance_inpaint_engine,
+                    enhance_inpaint_strength,
+                    enhance_inpaint_respective_field,
+                    enhance_inpaint_erode_or_dilate,
+                    enhance_mask_invert
+                ]
 
                 enhance_inpaint_mode = gr.Dropdown(choices=modules.flags.inpaint_options,
                                                 value=modules.config.default_inpaint_method,
