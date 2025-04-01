@@ -416,3 +416,38 @@ div:has(> #positive_prompt) {
 #inpaint_brush_color input[type=color]{
   background: none;
 }
+
+/* Fix for inpaint canvas layout */
+#inpaint_canvas, #inpaint_mask_canvas {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 500px !important;
+  object-fit: contain;
+}
+
+/* Ensure proper masking interface layout */
+.image_input_panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Fix canvas container */
+#inpaint_canvas > .fixed-height, #inpaint_mask_canvas > .fixed-height {
+  height: auto !important;
+  min-height: 500px !important;
+}
+
+/* Ensure sketch tool is properly sized */
+#inpaint_canvas > .sketch-container, #inpaint_mask_canvas > .sketch-container {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 500px !important;
+}
+
+/* Fix canvas positioning */
+#inpaint_canvas canvas, #inpaint_mask_canvas canvas {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain;
+}
